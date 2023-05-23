@@ -39,15 +39,17 @@ extension URLComponents {
 extension URLRequest {
     
     static func unsplash(url: URL) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.setValue("v1", forHTTPHeaderField: "Accept-Version")
-        fatalError("create your own unsplash api key -> https://unsplash.com/documentation#creating-a-developer-account")
-        request.setValue("[ add your unsplash api key here ]", forHTTPHeaderField: "Authorization")
+        let request = URLRequest(url: URL(string:  "https://api.unsplash.com/search/photos?page=1&per_page=50&query=mac&client_id=cNtxMzMLT8_GFa8TE8ACB5MWVJFOILOE57YRviGQxuI")!)
         return request
+
     }
     
-    static func searchPhotos(query: String, perPage: Int = 20) -> URLRequest {
-        let url = URLComponents.unsplash(path: "/search/photos", queryItems: ["query": query, "per_page": "\(perPage)"]).url!
-        return .unsplash(url: url)
+    static func searchPhotos(query: String, perPage: Int = 80) -> URLRequest {
+        
+        
+        let request = URLRequest(url: URL(string:  "https://api.unsplash.com/search/photos?page=1&per_page=50&query=\(query)&client_id=cNtxMzMLT8_GFa8TE8ACB5MWVJFOILOE57YRviGQxuI")!)
+        
+        return request
+
     }
 }
